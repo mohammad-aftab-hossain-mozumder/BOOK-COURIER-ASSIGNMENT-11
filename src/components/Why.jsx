@@ -45,7 +45,6 @@ export default function Why() {
           ))}
         </div>
 
-        {/* Buttons */}
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-3">
       
           <Link to={'/register'} className='px-6 py-3 rounded-full bg-orange-500 text-white font-semibold'>Get started</Link>
