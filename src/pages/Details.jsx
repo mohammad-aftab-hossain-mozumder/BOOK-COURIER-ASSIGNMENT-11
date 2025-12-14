@@ -31,7 +31,7 @@ const Details = () => {
     },
   });
 
-  // Orders + R
+  // Orders + 
   useEffect(() => {
     if (!user?.email) return;
 
