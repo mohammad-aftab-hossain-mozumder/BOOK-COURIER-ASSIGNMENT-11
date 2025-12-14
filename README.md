@@ -4,6 +4,11 @@
 
 👉 **Live URL:** [https://assignment-11-bc60e.web.app/](https://assignment-11-bc60e.web.app/)
 
+## 📦 GitHub Repositories
+
+* **Client Repo:** [https://github.com/mohammad-aftab-hossain-mozumder/BOOK-COURIER-ASSIGNMENT-11.git](https://github.com/mohammad-aftab-hossain-mozumder/BOOK-COURIER-ASSIGNMENT-11.git)
+* **Server Repo:** [https://github.com/mohammad-aftab-hossain-mozumder/ASSIGNMENT-11-BOOK-COURIER-SERVER.git](https://github.com/mohammad-aftab-hossain-mozumder/ASSIGNMENT-11-BOOK-COURIER-SERVER.git)
+
 ---
 
 ## 🎯 Project Purpose
@@ -231,13 +236,6 @@ VITE_storageBucket=YOUR_STORAGE_BUCKET
 VITE_messagingSenderId=YOUR_SENDER_ID
 VITE_appId=YOUR_APP_ID
 ````
-
-
-
-## 📦 GitHub Repositories
-
-* **Client Repo:** [https://github.com/mohammad-aftab-hossain-mozumder/BOOK-COURIER-ASSIGNMENT-11.git](https://github.com/mohammad-aftab-hossain-mozumder/BOOK-COURIER-ASSIGNMENT-11.git)
-* **Server Repo:** [https://github.com/mohammad-aftab-hossain-mozumder/ASSIGNMENT-11-BOOK-COURIER-SERVER.git](https://github.com/mohammad-aftab-hossain-mozumder/ASSIGNMENT-11-BOOK-COURIER-SERVER.git)
 
 ---
 
