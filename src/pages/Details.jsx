@@ -31,7 +31,7 @@ const Details = () => {
     },
   });
 
-  // Orders + Rating fetch and collect
+  // Orders + Rating fetch and collec
   useEffect(() => {
     if (!user?.email) return;
 
