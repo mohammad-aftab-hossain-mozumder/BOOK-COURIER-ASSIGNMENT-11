@@ -31,7 +31,7 @@ const Details = () => {
     },
   });
 
-  // Orde
+  // Ord
   useEffect(() => {
     if (!user?.email) return;
 
