@@ -34,7 +34,7 @@ const LibrarianHome = () => {
 
   const paymentData =
     data?.paymentStatus
-      ?.filter((item) => item._id === "unpaid")
+      ?.filter((item) => item._id === "pending")
       ?.map((item) => ({
         name: "Still on user's cart",
         count: item.count,
@@ -70,7 +70,7 @@ const LibrarianHome = () => {
 
         {data?.paymentStatus?.map(
           (single) =>
-            single._id === "unpaid" && (
+            single._id === "pending" && (
               <div
                 key={single._id}
                 className="bg-white rounded-2xl shadow-md border border-gray-100 p-6 text-center hover:shadow-lg transition-all"

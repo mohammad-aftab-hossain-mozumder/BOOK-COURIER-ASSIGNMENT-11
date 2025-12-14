@@ -58,48 +58,51 @@ const Dashboard = () => {
     { title: "Manage Books", link: '/dashboard/manage-books', icon: <MdOutlineManageSearch /> },
     { title: "Profile", link: '/dashboard/profile', icon: <CgProfile /> },
   ]
-  const who = data.length > 0 && data[0]?.role === "Admin" ? admin : data[0]?.role === "Reader" ? reader : librarian
-  return (
-    <div className="drawer lg:drawer-open">
-      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
-        {/* Navbar */}
-        <nav className="navbar w-full bg-base-300">
-          <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost">
-            {/* Sidebar toggle icon */}
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M9 4v16"></path><path d="M14 10l2 2l-2 2"></path></svg>
-          </label>
-          <div className="px-4">Dashboard</div>
-        </nav>
-        {/* Page content here */}
-        <Outlet></Outlet>
-      </div>
+  if (data.length > 0) {
+    const who = data[0]?.role === "Admin" ? admin : data[0]?.role === "Reader" ? reader : librarian
+    return (
+      <div className="drawer lg:drawer-open">
+        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content">
+          {/* Navbar */}
+          <nav className="navbar w-full bg-base-300">
+            <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost">
+              {/* Sidebar toggle icon */}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M9 4v16"></path><path d="M14 10l2 2l-2 2"></path></svg>
+            </label>
+            <div className="px-4">Dashboard</div>
+          </nav>
+          {/* Page content here */}
+          <Outlet></Outlet>
+        </div>
 
-      <div className="drawer-side is-drawer-close:overflow-visible">
-        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-        <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
-          {/* Sidebar content here */}
-          <ul className="menu w-full grow">
-            {/* List item */}
-            {
-              who.map((single, index) =>
-                <li className='my-2' key={index}>
-                  <Link to={single.link}>
-                    <button className="is-drawer-close:tooltip flex justify-center items-center gap-2 is-drawer-close:tooltip-right" data-tip={single.title}>
-                      {/* Home icon */}
-                      <p className='text text-2xl'>{single.icon}</p>
-                      <span className="is-drawer-close:hidden">{single.title}</span>
-                    </button>
-                  </Link>
-                </li>
-              )
-            }
+        <div className="drawer-side is-drawer-close:overflow-visible">
+          <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+          <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+            {/* Sidebar content here */}
+            <ul className="menu w-full grow">
+              {/* List item */}
+              {
+                who.map((single, index) =>
+                  <li className='my-2' key={index}>
+                    <Link to={single.link}>
+                      <button className="is-drawer-close:tooltip flex justify-center items-center gap-2 is-drawer-close:tooltip-right" data-tip={single.title}>
+                        {/* Home icon */}
+                        <p className='text text-2xl'>{single.icon}</p>
+                        <span className="is-drawer-close:hidden">{single.title}</span>
+                      </button>
+                    </Link>
+                  </li>
+                )
+              }
 
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+
 }
 
 export default Dashboard

@@ -8,7 +8,7 @@ import LibrarianHome from './LibrarianHome';
 const DashboardHome = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
-    const { data, isLoading } = useQuery({
+    const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['/users/by-email', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/by-email?email=${user.email}`)
@@ -18,17 +18,22 @@ const DashboardHome = () => {
     if (isLoading) {
         return <p className='text-4xl font-black'>Loading......</p>
     }
-    const role = data[0]?.role
-    if (role === "Admin") {
-        return <AdminHome/>
+    if (data.length === 0) {
+        return refetch()
     }
+    if (data.length > 0) {
+        const role = data[0]?.role
+        if (role === "Admin") {
+            return <AdminHome />
+        }
 
-    if (role === "Reader") {
-        return <ReaderHome />;
-    }
+        if (role === "Reader") {
+            return <ReaderHome />;
+        }
 
-    if (role === "Librarian") {
-        return <LibrarianHome />;
+        if (role === "Librarian") {
+            return <LibrarianHome />;
+        }
     }
 }
 

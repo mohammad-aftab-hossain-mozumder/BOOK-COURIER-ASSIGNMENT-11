@@ -83,7 +83,10 @@ const router = createBrowserRouter([
         path: 'add-book',
         element: <LibrarianRoute><AddBook></AddBook></LibrarianRoute>
       },
-
+      {
+        path: 'librarian-books/:id',
+        element: <LibrarianRoute><LibrarianBookDetails></LibrarianBookDetails></LibrarianRoute>
+      },
       {
         path: 'wishlist',
         element: <ReaderRoute><Wishlist></Wishlist></ReaderRoute>
@@ -95,10 +98,6 @@ const router = createBrowserRouter([
       {
         path: 'user-orders',
         element: <ReaderRoute><UserOrders></UserOrders></ReaderRoute>
-      },
-      {
-        path: 'librarian-books/:id',
-        Component: LibrarianBookDetails
       },
       {
         path: 'payment-cancelled',
@@ -124,7 +123,7 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path:'*',
+    path: '*',
     element: <p>404 Page Not Found</p>
   }
 ]);

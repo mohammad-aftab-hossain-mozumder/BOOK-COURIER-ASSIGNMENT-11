@@ -23,6 +23,13 @@ const Details = () => {
       return res.data;
     },
   });
+  const { data: userdata = [], isLoading: l2 } = useQuery({
+    queryKey: ["user-by-email", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/by-email?email=${user?.email}`);
+      return res.data;
+    },
+  });
 
   // Orders + Ratings
   useEffect(() => {
@@ -30,8 +37,9 @@ const Details = () => {
 
     const fetchData = async () => {
       const orders = await axiosSecure.get(
-        `/orders/of-user?email=${user.email}`
+        `/orders/of-user?email=${user?.email}`
       );
+
 
       orders.data?.forEach((o) => {
         if (o.bookId === id && o.paymentStatus === "paid") {
@@ -47,7 +55,7 @@ const Details = () => {
     fetchData();
   }, [user?.email, id, orderData]);
 
-  if (isLoading) return (
+  if (isLoading||l2) return (
     <div className="flex justify-center items-center">
       <p className='loading size-30 text-orange-500 text-center loading-infinity loading-xl'></p>
     </div>
@@ -87,7 +95,7 @@ const Details = () => {
       author: data.author,
       readerEmail: user?.email,
       bookId: id,
-    }).then(() =>{
+    }).then(() => {
       Swal.fire({
         title: "Book Added to Your Wishlist",
         icon: "success",
@@ -112,7 +120,7 @@ const Details = () => {
       price: data?.price,
       bookId: id,
       rating: 0,
-      paymentStatus: "unpaid",
+      paymentStatus: "pending",
       orderedDate: new Date().toISOString().split("T")[0],
     }).then(() => {
       Swal.fire({
@@ -206,21 +214,24 @@ const Details = () => {
                 </div>
               )}
 
-              <div className="flex gap-3 w-full lg:w-auto">
-                <button
-                  onClick={() => document.getElementById("my_modal_3").showModal()}
-                  className="px-6 py-2 rounded-full bg-orange-500 mx-2 text-white font-semibold"
-                >
-                  Order Now
-                </button>
+              {
+                userdata[0]?.role === "Reader" &&
+                <div className="flex gap-3 w-full lg:w-auto">
+                  <button
+                    onClick={() => document.getElementById("my_modal_3").showModal()}
+                    className="px-6 py-2 rounded-full bg-orange-500 mx-2 text-white font-semibold"
+                  >
+                    Order Now
+                  </button>
 
-                <button
-                  onClick={handleWishlist}
-                  className="px-6 py-2 rounded-full border border-orange-500 font-medium"
-                >
-                  Wishlist
-                </button>
-              </div>
+                  <button
+                    onClick={handleWishlist}
+                    className="px-6 py-2 rounded-full border border-orange-500 font-medium"
+                  >
+                    Wishlist
+                  </button>
+                </div>
+              }
             </div>
           </div>
         </div>

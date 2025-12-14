@@ -16,7 +16,7 @@ const UserOrders = () => {
   })
 
   const handleCancel = async (id) => {
-    await axiosSecure.patch(`/orders/${id}`, { deliveryStatus: "cancelled" })
+    await axiosSecure.patch(`/orders/${id}`, { paymentStatus: "cancelled" })
     refetch()
   }
 
@@ -89,7 +89,7 @@ const UserOrders = () => {
                 <td className="text-center space-x-2">
 
                   {/* Pay Now */}
-                  {single.paymentStatus !== "paid" && (
+                  {single.paymentStatus === "pending" && (
                     <button
                       onClick={() => handlePay(single)}
                       className="
@@ -103,8 +103,7 @@ const UserOrders = () => {
                   )}
 
                   {/* Cancel Order */}
-                  {single.paymentStatus === "paid" &&
-                    single.deliveryStatus === "pending" && (
+                  {single?.paymentStatus === "pending" && 
                       <button
                         onClick={() => handleCancel(single._id)}
                         className="
@@ -115,7 +114,7 @@ const UserOrders = () => {
                       >
                         Cancel
                       </button>
-                    )}
+                    }
 
                   {/* Cancelled */}
                   {single.deliveryStatus === "cancelled" && (

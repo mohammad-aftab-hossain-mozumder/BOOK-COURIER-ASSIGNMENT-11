@@ -98,11 +98,7 @@ const Home = () => {
         <div className="grid mx-auto lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 p-6">
           {
             data.map(single => (
-              <Zoom
-                key={single?._id}
-                duration={600}
-                fraction={0.25}
-              >
+              <Zoom>
                 <div
                   className="group bg-white rounded-2xl border border-gray-100
           shadow-sm hover:shadow-xl
