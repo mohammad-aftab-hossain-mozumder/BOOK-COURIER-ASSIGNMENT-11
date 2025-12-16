@@ -70,24 +70,6 @@ The platform connects **Readers**, **Librarians**, and **Admins** in a single sy
 
 ---
 
-### 🔐 Authentication & Security
-
-* Email & Password authentication using **Firebase**
-* One social login (Google)
-* Persistent login (no redirect on reload)
-* Secure Firebase & MongoDB credentials via environment variables
-
----
-
-### 🔐 Authentication & Security
-
-* Email & Password authentication using **Firebase**
-* One social login option (Google)
-* Role-based protected routes (RBAC enforced from server)
-* Firebase & MongoDB credentials secured using **Environment Variables**
-* Logged-in users remain authenticated after page reload
-
----
 
 ### 🔐 Authentication & Security
 
@@ -96,6 +78,8 @@ The platform connects **Readers**, **Librarians**, and **Admins** in a single sy
 * Protected routes using **Firebase JWT token verification**
 * Firebase & MongoDB credentials secured using **Environment Variables**
 * Logged-in users remain authenticated after page reload
+* Role-based protected routes (RBAC enforced from server)
+
 
 ---
 
